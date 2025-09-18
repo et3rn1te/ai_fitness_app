@@ -1,6 +1,6 @@
 # ai_fitness_app
 
-A new Flutter project.
+A new Flutter AI fitness project.
 
 ## Getting Started
 
