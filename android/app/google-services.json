@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "198359502247",
+    "project_id": "flutter-ml-app-17a2a",
+    "storage_bucket": "flutter-ml-app-17a2a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198359502247:android:b06302b62959524ccbfa82",
+        "android_client_info": {
+          "package_name": "com.example.ai_fitness_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpyyDokGLVy9t3CW99URJ7LnUov12XQBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
