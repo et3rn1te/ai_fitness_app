@@ -1,19 +1,19 @@
+import 'package:ai_fitness_app/screens/training/workout_player_screen.dart';
 import 'package:flutter/material.dart';
 
-class ExerciseCard extends StatelessWidget {
+class WorkoutCard extends StatelessWidget {
   final String name;
   final String duration;
-  final int energyLevel; // 1-3 representing easy, medium, hard
+  final int energyLevel;
   final String? imageUrl;
-  final VoidCallback? onTap;
+  // Remove the onTap parameter since we'll handle navigation internally
 
-  const ExerciseCard({
+  const WorkoutCard({
     super.key,
     required this.name,
     required this.duration,
     required this.energyLevel,
     this.imageUrl,
-    this.onTap,
   });
 
   Widget _buildEnergyIndicator() {
@@ -38,7 +38,18 @@ class ExerciseCard extends StatelessWidget {
     return Card(
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: onTap,
+        onTap: () {
+          // Option 1: Using GoRouter (Recommended if you're using GoRouter)
+          // context.go('/workout-player');
+
+          // Option 2: Using Navigator (If you're using traditional navigation)
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const WorkoutPlayerScreen(),
+            ),
+          );
+        },
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(

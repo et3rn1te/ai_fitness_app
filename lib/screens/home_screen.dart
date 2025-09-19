@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
-import '../widgets/flowstate_app_bar.dart';
-import '../widgets/primary_action_button.dart';
-import '../widgets/section_header.dart';
-import '../widgets/workout_plan_card.dart';
-import '../widgets/flowstate_bottom_nav_bar.dart';
-import '../screens/workout_screen.dart';
+import '../widgets/common/flowstate_app_bar.dart';
+import '../widgets/common/section_header.dart';
+import '../widgets/workout/workout_streak_calendar.dart';
+import '../widgets/common/flowstate_bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Example workout days for the calendar
+    final workoutDays = [
+      DateTime.now().subtract(const Duration(days: 1)),
+      DateTime.now().subtract(const Duration(days: 2)),
+      DateTime.now().subtract(const Duration(days: 3)),
+      DateTime.now().subtract(const Duration(days: 5)),
+      DateTime.now().subtract(const Duration(days: 6)),
+    ];
+
     return Scaffold(
       appBar: const FlowstateAppBar(title: 'Flowstate'),
       body: ListView(
@@ -26,109 +32,105 @@ class HomeScreen extends StatelessWidget {
           ),
           const SizedBox(height: 24),
 
-          // Quick start button
-          PrimaryActionButton(
-            text: 'Start New Workout',
-            onPressed: () {
-              Navigator.pushNamed(context, '/workout-player');
-            },
-            icon: Icons.play_circle_outline,
+          // Section 1: Workout Streak Calendar
+          const SectionHeader(
+            title: 'Your Progress',
+            actionLabel: 'View Stats',
+            onActionPressed: null,
           ),
+          const SizedBox(height: 16),
+          WorkoutStreakCalendar(workoutDays: workoutDays, currentStreak: 3),
           const SizedBox(height: 32),
 
-          // Workout Plans Section
+          // Section 2: Pose Detection Feature
           const SectionHeader(
-            title: 'Your Workout Plans',
-            actionLabel: 'View All',
-            onActionPressed: null, // TODO: Implement view all functionality
+            title: 'Pose Detection',
+            actionLabel: 'See All',
+            onActionPressed: null,
           ),
-
-          // Workout Plan Carousel
+          const SizedBox(height: 16),
           SizedBox(
-            height: 200, // Fixed height for the carousel
-            child: PageView(
-              controller: PageController(viewportFraction: 0.9),
-              padEnds: false,
+            height: 200,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: WorkoutPlanCard(
-                    title: 'Full Body Strength',
-                    duration: '45 minutes',
-                    level: 'Intermediate',
-                    accentColor: AppTheme.primaryBlue,
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => WorkoutScreen(
-                          workoutName: 'Full Body Strength',
-                          duration: '45 minutes',
-                          level: 'Intermediate',
-                          accentColor: AppTheme.primaryBlue,
-                          imageUrl:
-                              'https://picsum.photos/seed/strength/400/300',
-                        ),
-                      ),
-                    ),
-                    imageUrl: 'https://picsum.photos/seed/strength/400/300',
-                  ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: Padding(padding: const EdgeInsets.only(right: 8)),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: WorkoutPlanCard(
-                    title: 'HIIT Cardio',
-                    duration: '30 minutes',
-                    level: 'Advanced',
-                    accentColor: AppTheme.primaryBlue,
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => WorkoutScreen(
-                          workoutName: 'HIIT Cardio',
-                          duration: '30 minutes',
-                          level: 'Advanced',
-                          accentColor: AppTheme.primaryBlue,
-                          imageUrl: 'https://picsum.photos/seed/cardio/400/300',
-                        ),
-                      ),
-                    ),
-                    imageUrl: 'https://picsum.photos/seed/cardio/400/300',
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: WorkoutPlanCard(
-                    title: 'Mobility Flow',
-                    duration: '20 minutes',
-                    level: 'Beginner',
-                    accentColor: Colors.orange,
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => WorkoutScreen(
-                          workoutName: 'Mobility Flow',
-                          duration: '20 minutes',
-                          level: 'Beginner',
-                          accentColor: Colors.orange,
-                          imageUrl:
-                              'https://picsum.photos/seed/mobility/400/300',
-                        ),
-                      ),
-                    ),
-                    imageUrl: 'https://picsum.photos/seed/mobility/400/300',
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                   ),
                 ),
               ],
             ),
           ),
+          const SizedBox(height: 32),
+
+          // Section 3: Custom Workout Banner
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Theme.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.secondary,
+                ],
+              ),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Create Your Own Workout',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Design a custom workout plan that fits your goals and schedule',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.white.withOpacity(0.9),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    // TODO: Navigate to custom workout creation
+                    Navigator.pushNamed(context, '/create-workout');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: Theme.of(context).colorScheme.primary,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 12,
+                    ),
+                  ),
+                  child: const Text('Get Started'),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
         ],
       ),
       bottomNavigationBar: FlowstateBottomNavBar(
         currentIndex: 0,
         onTap: (index) {
           switch (index) {
+            case 0:
+              Navigator.pushNamed(context, '/training');
+              break;
             case 1:
-              Navigator.pushNamed(context, '/discover');
+              Navigator.pushNamed(context, '/pose');
               break;
             case 2:
               Navigator.pushNamed(context, '/profile');

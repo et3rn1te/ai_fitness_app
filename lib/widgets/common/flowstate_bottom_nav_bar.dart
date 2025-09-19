@@ -16,7 +16,8 @@ class FlowstateBottomNavBar extends StatelessWidget {
       currentIndex: currentIndex,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Discover'),
+        BottomNavigationBarItem(icon: Icon(Icons.timer), label: 'Training'),
+        BottomNavigationBarItem(icon: Icon(Icons.man), label: 'Pose'),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
       ],
       onTap: (index) {

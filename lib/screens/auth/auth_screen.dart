@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/primary_action_button.dart';
+import '../../widgets/common/primary_action_button.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});

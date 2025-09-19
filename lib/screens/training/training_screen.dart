@@ -1,37 +1,33 @@
+import 'package:ai_fitness_app/widgets/workout/workout_card.dart';
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
-import '../widgets/flowstate_app_bar.dart';
-import '../widgets/flowstate_bottom_nav_bar.dart';
-import '../widgets/workout_plan_card.dart';
-import '../widgets/section_header.dart';
-import '../screens/workout_screen.dart';
+import '../../theme/app_theme.dart';
+import '../../widgets/common/flowstate_bottom_nav_bar.dart';
+import '../../widgets/common/section_header.dart';
 
-class DiscoverScreen extends StatelessWidget {
-  const DiscoverScreen({super.key});
+class TrainingScreen extends StatelessWidget {
+  const TrainingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const FlowstateAppBar(title: 'Discover'),
+      appBar: AppBar(
+        title: const Text(
+          'Training',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+        ),
+        centerTitle: false,
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              // Implement search functionality
+            },
+          ),
+        ],
+      ),
       body: ListView(
         children: [
-          // Search Bar
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Search workouts...',
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide.none,
-                ),
-                filled: true,
-                fillColor: Theme.of(context).colorScheme.surfaceVariant,
-              ),
-            ),
-          ),
-
           // Categories Section
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -90,64 +86,53 @@ class DiscoverScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                WorkoutPlanCard(
-                  title: 'Full Body HIIT',
+                WorkoutCard(
+                  name: 'Full Body HIIT',
                   duration: '45 minutes',
-                  level: 'Advanced',
-                  accentColor: Colors.red,
-                  imageUrl: 'https://picsum.photos/seed/hiit/400/300',
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WorkoutScreen(
-                        workoutName: 'Full Body HIIT',
-                        duration: '45 minutes',
-                        level: 'Advanced',
-                        accentColor: Colors.red,
-                        imageUrl: 'https://picsum.photos/seed/hiit/400/300',
-                      ),
-                    ),
-                  ),
+                  energyLevel: 3,
                 ),
-                const SizedBox(height: 16),
-                WorkoutPlanCard(
-                  title: 'Morning Yoga Flow',
+                WorkoutCard(
+                  name: 'Morning Yoga Flow',
                   duration: '30 minutes',
-                  level: 'Beginner',
-                  accentColor: Colors.purple,
-                  imageUrl: 'https://picsum.photos/seed/yoga/400/300',
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WorkoutScreen(
-                        workoutName: 'Morning Yoga Flow',
-                        duration: '30 minutes',
-                        level: 'Beginner',
-                        accentColor: Colors.purple,
-                        imageUrl: 'https://picsum.photos/seed/yoga/400/300',
-                      ),
-                    ),
-                  ),
+                  energyLevel: 1,
                 ),
-                const SizedBox(height: 16),
-                WorkoutPlanCard(
-                  title: 'Core Strength',
+                WorkoutCard(
+                  name: 'Core Strength',
                   duration: '20 minutes',
-                  level: 'Intermediate',
-                  accentColor: AppTheme.primaryBlue,
-                  imageUrl: 'https://picsum.photos/seed/core/400/300',
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WorkoutScreen(
-                        workoutName: 'Core Strength',
-                        duration: '20 minutes',
-                        level: 'Intermediate',
-                        accentColor: AppTheme.primaryBlue,
-                        imageUrl: 'https://picsum.photos/seed/core/400/300',
-                      ),
-                    ),
-                  ),
+                  energyLevel: 2,
+                ),
+              ],
+            ),
+          ),
+
+          // Trending Workouts
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: SectionHeader(
+              title: 'Trending Workouts',
+              actionLabel: 'View All',
+            ),
+          ),
+
+          // Trending Workout Cards
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                WorkoutCard(
+                  name: 'Full Body HIIT',
+                  duration: '45 minutes',
+                  energyLevel: 3,
+                ),
+                WorkoutCard(
+                  name: 'Morning Yoga Flow',
+                  duration: '30 minutes',
+                  energyLevel: 1,
+                ),
+                WorkoutCard(
+                  name: 'Core Strength',
+                  duration: '20 minutes',
+                  energyLevel: 2,
                 ),
               ],
             ),
@@ -161,8 +146,11 @@ class DiscoverScreen extends StatelessWidget {
             case 0:
               Navigator.pushReplacementNamed(context, '/home');
               break;
-            case 2:
+            case 1:
               Navigator.pushNamed(context, '/profile');
+              break;
+            case 2:
+              Navigator.pushNamed(context, '/pose');
               break;
           }
         },

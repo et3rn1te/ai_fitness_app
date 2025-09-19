@@ -1,10 +1,11 @@
+import 'package:ai_fitness_app/screens/pose/pose_screen.dart';
+import 'package:ai_fitness_app/screens/training/training_screen.dart';
 import 'package:flutter/material.dart';
 import 'theme/app_theme.dart';
-import 'screens/auth_screen.dart';
+import 'screens/auth/auth_screen.dart';
 import 'screens/home_screen.dart';
-import 'screens/profile_screen.dart';
-import 'screens/workout_player_screen.dart';
-import 'screens/discover_screen.dart';
+import 'screens/profile/profile_screen.dart';
+import 'screens/training/workout_player_screen.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -41,7 +42,8 @@ class _FlowstateAppState extends State<FlowstateApp> {
       routes: {
         '/': (context) => const AuthScreen(),
         '/home': (context) => const HomeScreen(),
-        '/discover': (context) => const DiscoverScreen(),
+        '/training': (context) => const TrainingScreen(),
+        '/pose': (context) => const PoseScreen(),
         '/profile': (context) => ProfileScreen(
           onThemeChanged: toggleTheme,
           currentTheme: _themeMode,

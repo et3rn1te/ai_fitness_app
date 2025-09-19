@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/common/primary_action_button.dart';
-import '../widgets/workout/workout_exercise_item.dart';
+import '../../widgets/common/primary_action_button.dart';
+import '../../widgets/workout/workout_exercise_item.dart';
 
 class WorkoutScreen extends StatelessWidget {
   final String workoutName;

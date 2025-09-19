@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
-import '../widgets/common/primary_action_button.dart';
+import '../../widgets/common/primary_action_button.dart';
 
 class WorkoutPlayerScreen extends StatelessWidget {
   const WorkoutPlayerScreen({super.key});

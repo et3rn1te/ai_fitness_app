@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/common/flowstate_app_bar.dart';
-import '../widgets/common/section_header.dart';
+import '../../widgets/common/section_header.dart';
 import '../../widgets/common/flowstate_bottom_nav_bar.dart';
 
 class ProfileScreen extends StatelessWidget {
