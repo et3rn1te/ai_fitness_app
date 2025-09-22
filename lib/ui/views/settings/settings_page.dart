@@ -50,7 +50,7 @@ class SettingsPage extends StatelessWidget {
               context.push('/training');
               break;
             case 2:
-              context.push('/pose');
+              context.push('/pose_detection');
               break;
             case 3:
               // Already on Settings

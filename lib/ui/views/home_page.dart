@@ -96,7 +96,7 @@ class HomePage extends StatelessWidget {
               break;
             case 2:
               // Navigate to Pose
-              context.push('/pose');
+              context.push('/pose_detection');
               break;
             case 3:
               // Navigate to Settings

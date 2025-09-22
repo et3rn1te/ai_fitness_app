@@ -167,8 +167,8 @@ class TrainingPage extends StatelessWidget {
               // Already on Training
               break;
             case 2:
-              // Navigate to Pose
-              context.push('/pose');
+              // Navigate to Pose Detection
+              context.push('/pose_detection');
               break;
             case 3:
               // Navigate to Settings

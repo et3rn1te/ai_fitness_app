@@ -1,5 +1,6 @@
 import 'package:ai_fitness_app/ui/views/auth/login_page.dart';
 import 'package:ai_fitness_app/ui/views/home_page.dart';
+import 'package:ai_fitness_app/ui/views/pose/pose_detection_page.dart';
 import 'package:ai_fitness_app/ui/views/settings/settings_page.dart';
 import 'package:ai_fitness_app/ui/views/training/training_page.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +54,13 @@ final GoRouter _router = GoRouter(
       path: '/training',
       builder: (context, state) {
         return const TrainingPage();
+      },
+    ),
+    GoRoute(
+      name: '/pose_detection',
+      path: '/pose_detection',
+      builder: (context, state) {
+        return const PoseDetectionPage();
       },
     ),
     GoRoute(
