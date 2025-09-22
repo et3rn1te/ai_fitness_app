@@ -1,5 +1,6 @@
 import 'package:ai_fitness_app/ui/views/auth/login_page.dart';
 import 'package:ai_fitness_app/ui/views/home_page.dart';
+import 'package:ai_fitness_app/ui/views/settings/settings_page.dart';
 import 'package:ai_fitness_app/ui/views/training/training_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -52,6 +53,13 @@ final GoRouter _router = GoRouter(
       path: '/training',
       builder: (context, state) {
         return const TrainingPage();
+      },
+    ),
+    GoRoute(
+      name: '/settings',
+      path: '/settings',
+      builder: (context, state) {
+        return const SettingsPage();
       },
     ),
   ],

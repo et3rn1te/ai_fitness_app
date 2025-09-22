@@ -30,7 +30,6 @@ class HomePage extends StatelessWidget {
             ),
 
             // Popular Workouts Section
-            // Popular Workouts Section
             const SizedBox(height: 24),
             SectionTitle(
               title: 'Popular Workouts',
