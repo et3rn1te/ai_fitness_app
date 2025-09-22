@@ -19,7 +19,7 @@ class TrainingPage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
-              // Handle search
+              context.push('/category');
             },
           ),
           IconButton(
@@ -95,8 +95,7 @@ class TrainingPage extends StatelessWidget {
                             title: 'Workout ${columnIndex * 2 + 1}',
                             duration: '${30 + columnIndex * 5} min',
                             energyLevel: (columnIndex % 3) + 1,
-                            imageUrl:
-                                'https://example.com/workout${columnIndex * 2}.jpg',
+                            imageUrl: 'https://picsum.photos/id/237/200/300',
                             onTap: () {},
                           ),
                           const SizedBox(height: 16), // Spacing between rows
@@ -107,8 +106,7 @@ class TrainingPage extends StatelessWidget {
                               title: 'Workout ${columnIndex * 2 + 2}',
                               duration: '${35 + columnIndex * 5} min',
                               energyLevel: ((columnIndex + 1) % 3) + 1,
-                              imageUrl:
-                                  'https://example.com/workout${columnIndex * 2 + 1}.jpg',
+                              imageUrl: 'https://picsum.photos/id/237/200/300',
                               onTap: () {},
                             ),
                         ],

@@ -1,6 +1,8 @@
 import 'package:ai_fitness_app/ui/views/auth/login_page.dart';
 import 'package:ai_fitness_app/ui/views/home_page.dart';
 import 'package:ai_fitness_app/ui/views/pose/pose_detection_page.dart';
+import 'package:ai_fitness_app/ui/views/search/category_page.dart';
+import 'package:ai_fitness_app/ui/views/search/results_page.dart';
 import 'package:ai_fitness_app/ui/views/settings/settings_page.dart';
 import 'package:ai_fitness_app/ui/views/training/training_page.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +56,25 @@ final GoRouter _router = GoRouter(
       path: '/training',
       builder: (context, state) {
         return const TrainingPage();
+      },
+    ),
+    GoRoute(
+      name: '/category',
+      path: '/category',
+      builder: (context, state) {
+        return const CategoryPage();
+      },
+    ),
+    GoRoute(
+      name: '/results',
+      path: '/results',
+      builder: (context, state) {
+        final Map<String, dynamic>? extras =
+            state.extra as Map<String, dynamic>?;
+        return ResultsPage(
+          categoryName: extras?['categoryName'] ?? 'Unknown',
+          workouts: extras?['workouts'] as List<Map<String, dynamic>>,
+        );
       },
     ),
     GoRoute(
