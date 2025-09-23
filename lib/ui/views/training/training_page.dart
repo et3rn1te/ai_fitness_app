@@ -4,6 +4,7 @@ import 'package:ai_fitness_app/ui/widgets/common/section_title.dart';
 import 'package:ai_fitness_app/ui/widgets/training/training_banner.dart';
 import 'package:ai_fitness_app/ui/widgets/workout/workout_card_1.dart';
 import 'package:ai_fitness_app/ui/widgets/workout/workout_card_2.dart';
+import 'package:ai_fitness_app/utils/navigation_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -54,14 +55,26 @@ class TrainingPage extends StatelessWidget {
                     duration: '45 min',
                     level: 'Intermediate',
                     backgroundImageUrl: 'https://picsum.photos/id/237/200/300',
-                    onTap: () {},
+                    onTap: () => navigateToExerciseList(
+                      context,
+                      workoutName: 'Full Body HIIT',
+                      duration: '45 min',
+                      backgroundImageUrl:
+                          'https://picsum.photos/id/237/200/300',
+                    ),
                   ),
                   WorkoutCardVariant1(
                     title: 'Core Strength',
                     duration: '30 min',
                     level: 'Advanced',
                     backgroundImageUrl: 'https://picsum.photos/id/237/200/300',
-                    onTap: () {},
+                    onTap: () => navigateToExerciseList(
+                      context,
+                      workoutName: 'Core Strength',
+                      duration: '30 min',
+                      backgroundImageUrl:
+                          'https://picsum.photos/id/237/200/300',
+                    ),
                   ),
                 ],
               ),
@@ -135,14 +148,26 @@ class TrainingPage extends StatelessWidget {
                     duration: '45 min',
                     level: 'Intermediate',
                     backgroundImageUrl: 'https://picsum.photos/id/237/200/300',
-                    onTap: () {},
+                    onTap: () => navigateToExerciseList(
+                      context,
+                      workoutName: 'Full Body HIIT',
+                      duration: '45 min',
+                      backgroundImageUrl:
+                          'https://picsum.photos/id/237/200/300',
+                    ),
                   ),
                   WorkoutCardVariant1(
                     title: 'Core Strength',
                     duration: '30 min',
                     level: 'Advanced',
                     backgroundImageUrl: 'https://picsum.photos/id/237/200/300',
-                    onTap: () {},
+                    onTap: () => navigateToExerciseList(
+                      context,
+                      workoutName: 'Core Strength',
+                      duration: '30 min',
+                      backgroundImageUrl:
+                          'https://picsum.photos/id/237/200/300',
+                    ),
                   ),
                 ],
               ),

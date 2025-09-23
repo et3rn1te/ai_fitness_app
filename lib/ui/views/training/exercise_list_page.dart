@@ -1,0 +1,246 @@
+import 'package:ai_fitness_app/ui/widgets/exercises/exercise_item.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+class ExerciseListPage extends StatelessWidget {
+  final String workoutName;
+  final String duration;
+  final int exerciseCount;
+  final String backgroundImageUrl;
+  final List<Map<String, dynamic>> exercises;
+
+  const ExerciseListPage({
+    super.key,
+    required this.workoutName,
+    required this.duration,
+    required this.exerciseCount,
+    required this.backgroundImageUrl,
+    required this.exercises,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Background Image Header
+          Container(
+            height: 200,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(backgroundImageUrl),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.black.withOpacity(0.3),
+                    Colors.black.withOpacity(0.7),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          // Content
+          CustomScrollView(
+            slivers: [
+              // App Bar
+              SliverAppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                pinned: true,
+                expandedHeight: 200,
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back, color: Colors.white),
+                  onPressed: () => context.pop(),
+                ),
+                actions: [
+                  PopupMenuButton(
+                    icon: const Icon(Icons.more_vert, color: Colors.white),
+                    itemBuilder: (context) => [
+                      const PopupMenuItem(
+                        value: 'edit',
+                        child: Text('Edit Workout'),
+                      ),
+                      const PopupMenuItem(
+                        value: 'delete',
+                        child: Text('Delete Workout'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+
+              // Main Content
+              SliverToBoxAdapter(
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Section 1: Workout Info
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              workoutName,
+                              style: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 6,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.timer,
+                                        size: 16,
+                                        color: Colors.blue,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        duration,
+                                        style: const TextStyle(
+                                          color: Colors.blue,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 6,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.purple.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.fitness_center,
+                                        size: 16,
+                                        color: Colors.purple,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        '$exerciseCount exercises',
+                                        style: const TextStyle(
+                                          color: Colors.purple,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // Section 2: Exercises List
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Exercises',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                // Handle edit
+                              },
+                              child: const Row(
+                                children: [
+                                  Text('Edit'),
+                                  Icon(Icons.chevron_right),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        padding: const EdgeInsets.all(20),
+                        itemCount: exercises.length,
+                        separatorBuilder: (context, index) => const Divider(),
+                        itemBuilder: (context, index) {
+                          final exercise = exercises[index];
+                          return ExerciseItem(
+                            name: exercise['name'],
+                            count: exercise['count'],
+                            animationUrl: exercise['animationUrl'],
+                            onReplace: () {
+                              // Handle replace
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 100), // Space for button
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          // Section 3: Start Button
+          Positioned(
+            left: 20,
+            right: 20,
+            bottom: 20,
+            child: ElevatedButton(
+              onPressed: () {
+                // Handle start workout
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: const Text(
+                'Start Workout',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

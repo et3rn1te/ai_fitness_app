@@ -118,10 +118,10 @@ class SettingsPage extends StatelessWidget {
                   // Navigate to login
                   context.push('/login');
                 },
-                child: const Text('Login'),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
+                child: const Text('Login'),
               ),
             ),
             const SizedBox(height: 12),
@@ -132,10 +132,10 @@ class SettingsPage extends StatelessWidget {
                   // Navigate to signup
                   context.push('/signup');
                 },
-                child: const Text('Sign Up'),
                 style: OutlinedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
+                child: const Text('Sign Up'),
               ),
             ),
           ],

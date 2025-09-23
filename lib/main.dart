@@ -4,6 +4,7 @@ import 'package:ai_fitness_app/ui/views/pose/pose_detection_page.dart';
 import 'package:ai_fitness_app/ui/views/search/category_page.dart';
 import 'package:ai_fitness_app/ui/views/search/results_page.dart';
 import 'package:ai_fitness_app/ui/views/settings/settings_page.dart';
+import 'package:ai_fitness_app/ui/views/training/exercise_list_page.dart';
 import 'package:ai_fitness_app/ui/views/training/training_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -74,6 +75,21 @@ final GoRouter _router = GoRouter(
         return ResultsPage(
           categoryName: extras?['categoryName'] ?? 'Unknown',
           workouts: extras?['workouts'] as List<Map<String, dynamic>>,
+        );
+      },
+    ),
+    GoRoute(
+      name: 'exercise_list',
+      path: '/exercise-list',
+      builder: (context, state) {
+        final extras = state.extra as Map<String, dynamic>;
+        return ExerciseListPage(
+          workoutName: extras['workoutName'] as String,
+          duration: extras['duration'] as String,
+          exerciseCount: extras['exerciseCount'] as int,
+          backgroundImageUrl: extras['backgroundImageUrl'] as String,
+          exercises: (extras['exercises'] as List<dynamic>)
+              .cast<Map<String, dynamic>>(),
         );
       },
     ),
