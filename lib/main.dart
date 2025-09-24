@@ -6,6 +6,8 @@ import 'package:ai_fitness_app/ui/views/search/results_page.dart';
 import 'package:ai_fitness_app/ui/views/settings/settings_page.dart';
 import 'package:ai_fitness_app/ui/views/training/exercise_list_page.dart';
 import 'package:ai_fitness_app/ui/views/training/training_page.dart';
+import 'package:ai_fitness_app/ui/views/admin/admin_dashboard.dart';
+import 'package:ai_fitness_app/ui/views/admin/data_upload_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:go_router/go_router.dart';
@@ -105,6 +107,20 @@ final GoRouter _router = GoRouter(
       path: '/settings',
       builder: (context, state) {
         return const SettingsPage();
+      },
+    ),
+    GoRoute(
+      name: '/admin',
+      path: '/admin',
+      builder: (context, state) {
+        return const AdminDashboard();
+      },
+    ),
+    GoRoute(
+      name: '/admin/data_upload',
+      path: '/admin/data_upload',
+      builder: (context, state) {
+        return DataUploadPage();
       },
     ),
   ],

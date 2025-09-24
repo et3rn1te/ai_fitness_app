@@ -1,0 +1,52 @@
+{
+  "body_parts": [
+    {
+      "name": "Abs",
+      "description": "Core and abdominal muscles",
+      "imageUrl": "https://example.com/abs-icon.png",
+      "order": 1
+    },
+    {
+      "name": "Chest",
+      "description": "Pectoral muscles and upper body",
+      "imageUrl": "https://example.com/chest-icon.png",
+      "order": 2
+    },
+    {
+      "name": "Back",
+      "description": "Upper and lower back muscles",
+      "imageUrl": "https://example.com/back-icon.png",
+      "order": 3
+    },
+    {
+      "name": "Arms",
+      "description": "Biceps, triceps, and forearms",
+      "imageUrl": "https://example.com/arms-icon.png",
+      "order": 4
+    },
+    {
+      "name": "Shoulders",
+      "description": "Deltoids and shoulder muscles",
+      "imageUrl": "https://example.com/shoulders-icon.png",
+      "order": 5
+    },
+    {
+      "name": "Legs",
+      "description": "Quadriceps, hamstrings, and calves",
+      "imageUrl": "https://example.com/legs-icon.png",
+      "order": 6
+    },
+    {
+      "name": "Glutes",
+      "description": "Gluteal muscles and lower body",
+      "imageUrl": "https://example.com/glutes-icon.png",
+      "order": 7
+    },
+    {
+      "name": "Full Body",
+      "description": "Complete body workout targeting multiple muscle groups",
+      "imageUrl": "https://example.com/full-body-icon.png",
+      "order": 8
+    }
+  ]
+}

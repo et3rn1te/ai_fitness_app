@@ -1,6 +1,6 @@
-// screens/settings_page.dart
 import 'package:ai_fitness_app/ui/widgets/common/custom_appbar.dart';
 import 'package:ai_fitness_app/ui/widgets/common/custom_bottomnav.dart';
+import 'package:ai_fitness_app/ui/views/admin/admin_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,6 +11,8 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Example: Check if user is logged in
     final bool isLoggedIn = true; // Replace with actual auth state
+    // Assuming you're using Firebase Auth
+    final isAdmin = true; // Replace with actual admin check logic
 
     return Scaffold(
       appBar: const CustomAppBar(title: 'Settings'),
@@ -35,7 +37,53 @@ class SettingsPage extends StatelessWidget {
             // Version Info
             _buildVersionInfo(),
 
-            const SizedBox(height: 40),
+            const SizedBox(height: 20),
+
+            // Admin Section (only visible to admins)
+            if (isAdmin) ...[
+              const SizedBox(height: 20),
+              Container(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Admin Controls',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    ListTile(
+                      leading: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.red.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Icon(
+                          Icons.admin_panel_settings,
+                          color: Colors.red,
+                        ),
+                      ),
+                      title: const Text('Admin Dashboard'),
+                      subtitle: const Text('Manage app content and data'),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AdminDashboard(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ],
         ),
       ),

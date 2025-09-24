@@ -1,0 +1,51 @@
+{
+  "workouts": [
+    {
+      "title": "Full Body HIIT",
+      "duration": 45,
+      "level": "intermediate",
+      "imageUrl": "https://example.com/full-body-hiit.jpg",
+      "category": "hiit",
+      "isFeatured": true,
+      "popularity": 85,
+      "exercises": [
+        {
+          "name": "Jumping Jacks",
+          "duration": "00:30",
+          "animationUrl": "https://example.com/jumping-jacks.gif"
+        },
+        {
+          "name": "Push-ups",
+          "reps": 10,
+          "animationUrl": "https://example.com/pushups.gif"
+        },
+        {
+          "name": "Mountain Climbers",
+          "duration": "00:45",
+          "animationUrl": "https://example.com/mountain-climbers.gif"
+        }
+      ]
+    },
+    {
+      "title": "Core Strength",
+      "duration": 30,
+      "level": "beginner",
+      "imageUrl": "https://example.com/core-strength.jpg",
+      "category": "strength",
+      "isFeatured": false,
+      "popularity": 75,
+      "exercises": [
+        {
+          "name": "Crunches",
+          "reps": 15,
+          "animationUrl": "https://example.com/crunches.gif"
+        },
+        {
+          "name": "Plank Hold",
+          "duration": "00:30",
+          "animationUrl": "https://example.com/plank.gif"
+        }
+      ]
+    }
+  ]
+}

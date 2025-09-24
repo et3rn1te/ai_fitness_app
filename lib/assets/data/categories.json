@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "name": "HIIT",
+      "description": "High-intensity interval training workouts for maximum calorie burn",
+      "imageUrl": "https://example.com/hiit-icon.png",
+      "order": 1
+    },
+    {
+      "name": "Strength",
+      "description": "Build muscle and increase strength with resistance training",
+      "imageUrl": "https://example.com/strength-icon.png",
+      "order": 2
+    },
+    {
+      "name": "Cardio",
+      "description": "Improve endurance and heart health with cardiovascular exercises",
+      "imageUrl": "https://example.com/cardio-icon.png",
+      "order": 3
+    },
+    {
+      "name": "Yoga",
+      "description": "Enhance flexibility and mindfulness with yoga practices",
+      "imageUrl": "https://example.com/yoga-icon.png",
+      "order": 4
+    },
+    {
+      "name": "Stretching",
+      "description": "Improve flexibility and reduce muscle tension",
+      "imageUrl": "https://example.com/stretching-icon.png",
+      "order": 5
+    }
+  ]
+}
