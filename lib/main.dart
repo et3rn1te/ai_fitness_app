@@ -1,3 +1,4 @@
+import 'package:ai_fitness_app/core/models/workout_model.dart';
 import 'package:ai_fitness_app/ui/views/auth/login_page.dart';
 import 'package:ai_fitness_app/ui/views/home_page.dart';
 import 'package:ai_fitness_app/ui/views/pose/pose_detection_page.dart';
@@ -81,23 +82,16 @@ final GoRouter _router = GoRouter(
       },
     ),
     GoRoute(
-      name: 'exercise_list',
+      name: 'exercise-list',
       path: '/exercise-list',
       builder: (context, state) {
-        final extras = state.extra as Map<String, dynamic>;
-        return ExerciseListPage(
-          workoutName: extras['workoutName'] as String,
-          duration: extras['duration'] as String,
-          exerciseCount: extras['exerciseCount'] as int,
-          backgroundImageUrl: extras['backgroundImageUrl'] as String,
-          exercises: (extras['exercises'] as List<dynamic>)
-              .cast<Map<String, dynamic>>(),
-        );
+        final workout = state.extra as WorkoutModel;
+        return ExerciseListPage(workout: workout);
       },
     ),
     GoRoute(
-      name: '/pose_detection',
-      path: '/pose_detection',
+      name: '/pose-detection',
+      path: '/pose-detection',
       builder: (context, state) {
         return const PoseDetectionPage();
       },

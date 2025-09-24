@@ -59,7 +59,7 @@ class ResultsPage extends StatelessWidget {
                   child: WorkoutCardVariant2(
                     title: workout['title'],
                     duration: workout['duration'],
-                    energyLevel: workout['energyLevel'],
+                    level: workout['level'],
                     imageUrl: workout['imageUrl'],
                     onTap: () {
                       // Navigate to workout details

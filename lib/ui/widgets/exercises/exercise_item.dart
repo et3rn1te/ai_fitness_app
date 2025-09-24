@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class ExerciseItem extends StatelessWidget {
   final String name;
-  final String count; // This can be either duration (00:30) or reps (x10)
+  final String count;
   final String animationUrl;
-  final VoidCallback onReplace;
+  final VoidCallback? onReplace;
 
   const ExerciseItem({
     super.key,
     required this.name,
     required this.count,
     required this.animationUrl,
-    required this.onReplace,
+    this.onReplace,
   });
 
   @override
@@ -67,7 +67,11 @@ class ExerciseItem extends StatelessWidget {
           ),
 
           // Replace button
-          IconButton(icon: const Icon(Icons.swap_horiz), onPressed: onReplace),
+          if (onReplace != null)
+            IconButton(
+              icon: const Icon(Icons.swap_horiz),
+              onPressed: onReplace,
+            ),
         ],
       ),
     );

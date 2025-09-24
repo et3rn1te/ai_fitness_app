@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class WorkoutCardVariant2 extends StatelessWidget {
   final String title;
   final String duration;
-  final int energyLevel; // 1-3 representing beginner, intermediate, advanced
+  final String level;
   final String imageUrl;
   final VoidCallback? onTap;
 
@@ -11,12 +11,34 @@ class WorkoutCardVariant2 extends StatelessWidget {
     super.key,
     required this.title,
     required this.duration,
-    required this.energyLevel,
+    required this.level,
     required this.imageUrl,
     this.onTap,
   });
 
   Widget _buildEnergyLevel() {
+    // Convert level to number of active symbols
+    int activeSymbols;
+    Color symbolColor;
+
+    switch (level.toLowerCase()) {
+      case 'beginner':
+        activeSymbols = 1;
+        symbolColor = Colors.amber;
+        break;
+      case 'intermediate':
+        activeSymbols = 2;
+        symbolColor = Colors.amber;
+        break;
+      case 'advanced':
+        activeSymbols = 3;
+        symbolColor = Colors.amber;
+        break;
+      default:
+        activeSymbols = 1;
+        symbolColor = Colors.amber;
+    }
+
     return Row(
       children: List.generate(3, (index) {
         return Padding(
@@ -24,8 +46,8 @@ class WorkoutCardVariant2 extends StatelessWidget {
           child: Icon(
             Icons.bolt,
             size: 20,
-            color: index < energyLevel
-                ? Colors.amber
+            color: index < activeSymbols
+                ? symbolColor
                 : Colors.grey.withOpacity(0.3),
           ),
         );

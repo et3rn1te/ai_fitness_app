@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ai_fitness_app/services/data_upload_service.dart';
+import 'package:ai_fitness_app/core/services/data_upload_service.dart';
 
 class DataUploadPage extends StatelessWidget {
   DataUploadPage({super.key}); // Removed 'const'

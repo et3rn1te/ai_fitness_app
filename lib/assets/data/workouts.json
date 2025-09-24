@@ -46,6 +46,53 @@
           "animationUrl": "https://example.com/plank.gif"
         }
       ]
+    },
+    {
+      "title": "Abs for beginners",
+      "duration": 45,
+      "level": "beginner",
+      "imageUrl": "https://example.com/full-body-hiit.jpg",
+      "category": "hiit",
+      "isFeatured": false,
+      "popularity": 100,
+      "exercises": [
+        {
+          "name": "Jumping Jacks",
+          "duration": "00:30",
+          "animationUrl": "https://example.com/jumping-jacks.gif"
+        },
+        {
+          "name": "Crunches",
+          "reps": 10,
+          "animationUrl": "https://example.com/crunches.gif"
+        },
+        {
+          "name": "Mountain Climbers",
+          "duration": "00:45",
+          "animationUrl": "https://example.com/mountain-climbers.gif"
+        }
+      ]
+    },
+    {
+      "title": "Core Strength",
+      "duration": 30,
+      "level": "beginner",
+      "imageUrl": "https://example.com/core-strength.jpg",
+      "category": "strength",
+      "isFeatured": false,
+      "popularity": 75,
+      "exercises": [
+        {
+          "name": "Crunches",
+          "reps": 15,
+          "animationUrl": "https://example.com/crunches.gif"
+        },
+        {
+          "name": "Plank Hold",
+          "duration": "00:30",
+          "animationUrl": "https://example.com/plank.gif"
+        }
+      ]
     }
   ]
 }
