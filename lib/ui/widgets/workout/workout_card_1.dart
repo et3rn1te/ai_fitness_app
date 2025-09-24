@@ -24,7 +24,7 @@ class WorkoutCardVariant1 extends StatelessWidget {
         onTap: onTap,
         child: Container(
           height: 160,
-          width: 375,
+          width: 330,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             image: DecorationImage(

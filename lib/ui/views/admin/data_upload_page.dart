@@ -27,14 +27,14 @@ class DataUploadPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-                await _uploadService.uploadCategories();
+                await _uploadService.uploadWorkoutTypes();
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Categories uploaded!')),
+                    const SnackBar(content: Text('Workout Types uploaded!')),
                   );
                 }
               },
-              child: const Text('Upload Categories'),
+              child: const Text('Upload Workout Types'),
             ),
             ElevatedButton(
               onPressed: () async {

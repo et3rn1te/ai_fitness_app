@@ -21,7 +21,7 @@ class WorkoutTypeItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 180,
+        width: 160,
         height: 80,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -39,7 +39,7 @@ class WorkoutTypeItem extends StatelessWidget {
                 child: Text(
                   name,
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.w700,
                     height: 1.2, // Adjust line height for better readability
                   ),
@@ -49,11 +49,7 @@ class WorkoutTypeItem extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 12),
-              Icon(
-                icon,
-                size: 40,
-                color: iconColor ?? Theme.of(context).primaryColor,
-              ),
+              Icon(icon, size: 36, color: iconColor ?? Colors.black),
             ],
           ),
         ),

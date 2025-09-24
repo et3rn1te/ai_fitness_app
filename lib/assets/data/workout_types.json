@@ -1,0 +1,54 @@
+{
+  "workout_types": [
+    {
+      "name": "HIIT",
+      "description": "High-intensity interval training for maximum calorie burn",
+      "order": 1
+    },
+    {
+      "name": "Warm Up",
+      "description": "Prepare your body and muscles for exercise",
+      "order": 2
+    },
+    {
+      "name": "Fat Burn",
+      "description": "Focused workouts for optimal fat loss",
+      "order": 3
+    },
+    {
+      "name": "Build Muscle",
+      "description": "Targeted exercises for muscle growth",
+      "order": 4
+    },
+    {
+      "name": "Stretch",
+      "description": "Improve flexibility and reduce muscle tension",
+      "order": 5
+    },
+    {
+      "name": "Core",
+      "description": "Strengthen your abs and core muscles",
+      "order": 6
+    },
+    {
+      "name": "Cardio",
+      "description": "Heart-pumping cardiovascular exercises",
+      "order": 7
+    },
+    {
+      "name": "Tone Up",
+      "description": "Light resistance training for muscle definition",
+      "order": 8
+    },
+    {
+      "name": "Full Body",
+      "description": "Complete workout targeting all major muscle groups",
+      "order": 9
+    },
+    {
+      "name": "Recovery",
+      "description": "Light exercises for active recovery days",
+      "order": 10
+    }
+  ]
+}

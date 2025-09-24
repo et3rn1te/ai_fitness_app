@@ -1,4 +1,3 @@
-// services/data_upload_service.dart
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,8 +7,8 @@ class DataUploadService {
 
   Future<void> uploadInitialData() async {
     await uploadWorkouts();
-    await uploadCategories();
-    // await uploadBodyParts();
+    await uploadWorkoutTypes();
+    await uploadBodyParts();
     // ... other collections
   }
 
@@ -33,23 +32,23 @@ class DataUploadService {
     }
   }
 
-  Future<void> uploadCategories() async {
+  Future<void> uploadWorkoutTypes() async {
     try {
       // Read from JSON file
       final String jsonString = await rootBundle.loadString(
-        'lib/assets/data/categories.json',
+        'lib/assets/data/workout_types.json',
       );
       final data = json.decode(jsonString);
-      final categories = data['categories'] as List;
+      final workoutTypes = data['workout_types'] as List;
 
-      // Upload each category
-      for (var category in categories) {
-        await _firestore.collection('categories').add(category);
+      // Upload each workout type
+      for (var workoutType in workoutTypes) {
+        await _firestore.collection('workout_types').add(workoutType);
       }
 
-      print('Categories uploaded successfully');
+      print('Workout types uploaded successfully');
     } catch (e) {
-      print('Error uploading categories: $e');
+      print('Error uploading workout types: $e');
     }
   }
 

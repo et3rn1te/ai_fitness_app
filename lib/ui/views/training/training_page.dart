@@ -35,7 +35,12 @@ class TrainingPageContent extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Training',
-        actions: [IconButton(icon: const Icon(Icons.search), onPressed: () {})],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () => context.push('/category'),
+          ),
+        ],
       ),
       body: const SingleChildScrollView(
         child: Column(
