@@ -1,5 +1,8 @@
+import 'package:ai_fitness_app/core/viewmodels/category_view_model.dart';
 import 'package:ai_fitness_app/ui/widgets/search/level_badge.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class LevelSection extends StatelessWidget {
   const LevelSection({super.key});
@@ -39,7 +42,12 @@ class LevelSection extends StatelessWidget {
     );
   }
 
-  void _onLevelSelected(BuildContext context, String level) {
-    // Handle level selection
+  void _onLevelSelected(BuildContext context, String level) async {
+    final viewModel = Provider.of<CategoryViewModel>(context, listen: false);
+    final workouts = await viewModel.getWorkoutsByLevel(level);
+
+    if (context.mounted) {
+      context.push('/results', extra: {'title': level, 'workouts': workouts});
+    }
   }
 }

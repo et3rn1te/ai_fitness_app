@@ -8,26 +8,29 @@ class DurationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 100,
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.grey[100],
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          children: [
-            Text(
-              minutes,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const Text(
-              'mins',
-              style: TextStyle(fontSize: 14, color: Colors.grey),
-            ),
-          ],
+    return Card(
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          width: 100,
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                minutes,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const Text(
+                'mins',
+                style: TextStyle(fontSize: 14, color: Colors.grey),
+              ),
+            ],
+          ),
         ),
       ),
     );

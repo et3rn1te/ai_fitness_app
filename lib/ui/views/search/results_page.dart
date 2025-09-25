@@ -1,54 +1,26 @@
+import 'package:ai_fitness_app/core/models/workout_model.dart';
 import 'package:ai_fitness_app/ui/widgets/workout/workout_card_2.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ResultsPage extends StatelessWidget {
-  final String categoryName;
-  final List<Map<String, dynamic>> workouts;
+  final String title;
+  final List<WorkoutModel> workouts;
 
-  const ResultsPage({
-    super.key,
-    required this.categoryName,
-    required this.workouts,
-  });
+  const ResultsPage({super.key, required this.title, required this.workouts});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: SafeArea(
-          child: Container(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                  Text(
-                    categoryName,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    '${workouts.length} workouts',
-                    style: TextStyle(color: Colors.grey[600], fontSize: 14),
-                  ),
-                  const SizedBox(width: 16),
-                ],
-              ),
-            ),
-          ),
+      appBar: AppBar(
+        title: Text(title),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => context.pop(),
         ),
       ),
       body: workouts.isEmpty
-          ? _buildEmptyState()
+          ? const Center(child: Text('No workouts found for this category'))
           : ListView.builder(
               padding: const EdgeInsets.all(16),
               itemCount: workouts.length,
@@ -57,42 +29,17 @@ class ResultsPage extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 16),
                   child: WorkoutCardVariant2(
-                    title: workout['title'],
-                    duration: workout['duration'],
-                    level: workout['level'],
-                    imageUrl: workout['imageUrl'],
+                    title: workout.title,
+                    duration: '${workout.duration} min',
+                    level: workout.level,
+                    imageUrl: workout.imageUrl,
                     onTap: () {
-                      // Navigate to workout details
+                      context.push('/exercise-list', extra: workout);
                     },
                   ),
                 );
               },
             ),
-    );
-  }
-
-  Widget _buildEmptyState() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.fitness_center, size: 64, color: Colors.grey[400]),
-          const SizedBox(height: 16),
-          Text(
-            'No workouts found',
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.grey[600],
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Try selecting a different category',
-            style: TextStyle(fontSize: 14, color: Colors.grey[500]),
-          ),
-        ],
-      ),
     );
   }
 }

@@ -5,92 +5,148 @@
       "duration": 45,
       "level": "intermediate",
       "imageUrl": "https://example.com/full-body-hiit.jpg",
-      "category": "hiit",
+      "workoutType": "hiit",
+      "bodyPart": "full_body",
       "isFeatured": true,
       "popularity": 85,
       "exercises": [
         {
           "name": "Jumping Jacks",
           "duration": "00:30",
-          "animationUrl": "https://example.com/jumping-jacks.gif"
+          "animationUrl": "https://example.com/jumping-jacks.gif",
+          "bodyPart": "full_body"
         },
         {
           "name": "Push-ups",
           "reps": 10,
-          "animationUrl": "https://example.com/pushups.gif"
+          "animationUrl": "https://example.com/pushups.gif",
+          "bodyPart": "chest"
         },
         {
           "name": "Mountain Climbers",
           "duration": "00:45",
-          "animationUrl": "https://example.com/mountain-climbers.gif"
+          "animationUrl": "https://example.com/mountain-climbers.gif",
+          "bodyPart": "core"
         }
       ]
     },
     {
-      "title": "Core Strength",
+      "title": "Core Crusher",
       "duration": 30,
       "level": "beginner",
       "imageUrl": "https://example.com/core-strength.jpg",
-      "category": "strength",
+      "workoutType": "core",
+      "bodyPart": "core",
       "isFeatured": false,
       "popularity": 75,
       "exercises": [
         {
           "name": "Crunches",
           "reps": 15,
-          "animationUrl": "https://example.com/crunches.gif"
+          "animationUrl": "https://example.com/crunches.gif",
+          "bodyPart": "core"
         },
         {
           "name": "Plank Hold",
           "duration": "00:30",
-          "animationUrl": "https://example.com/plank.gif"
+          "animationUrl": "https://example.com/plank.gif",
+          "bodyPart": "core"
+        },
+        {
+          "name": "Russian Twists",
+          "reps": 20,
+          "animationUrl": "https://example.com/russian-twists.gif",
+          "bodyPart": "core"
         }
       ]
     },
     {
-      "title": "Abs for beginners",
+      "title": "Fat Burning HIIT",
       "duration": 45,
-      "level": "beginner",
-      "imageUrl": "https://example.com/full-body-hiit.jpg",
-      "category": "hiit",
-      "isFeatured": false,
-      "popularity": 100,
+      "level": "intermediate",
+      "imageUrl": "https://example.com/fat-burning.jpg",
+      "workoutType": "fat_burn",
+      "bodyPart": "full_body",
+      "isFeatured": true,
+      "popularity": 90,
       "exercises": [
         {
-          "name": "Jumping Jacks",
-          "duration": "00:30",
-          "animationUrl": "https://example.com/jumping-jacks.gif"
-        },
-        {
-          "name": "Crunches",
-          "reps": 10,
-          "animationUrl": "https://example.com/crunches.gif"
-        },
-        {
-          "name": "Mountain Climbers",
+          "name": "Burpees",
           "duration": "00:45",
-          "animationUrl": "https://example.com/mountain-climbers.gif"
+          "animationUrl": "https://example.com/burpees.gif",
+          "bodyPart": "full_body"
+        },
+        {
+          "name": "High Knees",
+          "duration": "00:30",
+          "animationUrl": "https://example.com/high-knees.gif",
+          "bodyPart": "legs"
+        },
+        {
+          "name": "Jump Squats",
+          "reps": 15,
+          "animationUrl": "https://example.com/jump-squats.gif",
+          "bodyPart": "legs"
         }
       ]
     },
     {
-      "title": "Core Strength",
-      "duration": 30,
-      "level": "beginner",
-      "imageUrl": "https://example.com/core-strength.jpg",
-      "category": "strength",
+      "title": "Upper Body Strength",
+      "duration": 40,
+      "level": "intermediate",
+      "imageUrl": "https://example.com/upper-body.jpg",
+      "workoutType": "build_muscle",
+      "bodyPart": "upper_body",
       "isFeatured": false,
-      "popularity": 75,
+      "popularity": 80,
       "exercises": [
         {
-          "name": "Crunches",
-          "reps": 15,
-          "animationUrl": "https://example.com/crunches.gif"
+          "name": "Push-ups",
+          "reps": 12,
+          "animationUrl": "https://example.com/pushups.gif",
+          "bodyPart": "chest"
         },
         {
-          "name": "Plank Hold",
+          "name": "Dumbbell Rows",
+          "reps": 15,
+          "animationUrl": "https://example.com/dumbbell-rows.gif",
+          "bodyPart": "back"
+        },
+        {
+          "name": "Shoulder Press",
+          "reps": 12,
+          "animationUrl": "https://example.com/shoulder-press.gif",
+          "bodyPart": "shoulders"
+        }
+      ]
+    },
+    {
+      "title": "Morning Stretch",
+      "duration": 20,
+      "level": "beginner",
+      "imageUrl": "https://example.com/morning-stretch.jpg",
+      "workoutType": "stretch",
+      "bodyPart": "full_body",
+      "isFeatured": true,
+      "popularity": 85,
+      "exercises": [
+        {
+          "name": "Cat-Cow Stretch",
+          "duration": "00:45",
+          "animationUrl": "https://example.com/cat-cow.gif",
+          "bodyPart": "back"
+        },
+        {
+          "name": "Hamstring Stretch",
           "duration": "00:30",
-          "animationUrl": "https://example.com/plank.gif"
+          "animationUrl": "https://example.com/hamstring-stretch.gif",
+          "bodyPart": "legs"
+        },
+        {
+          "name": "Shoulder Rolls",
+          "duration": "00:30",
+          "animationUrl": "https://example.com/shoulder-rolls.gif",
+          "bodyPart": "shoulders"
         }
       ]
     }

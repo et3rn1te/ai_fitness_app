@@ -17,7 +17,28 @@ class CategoryViewModel extends ChangeNotifier {
     return _repository.getBodyParts();
   }
 
-  Future<List<WorkoutModel>> getWorkoutsByType(String workoutTypeId) {
-    return _repository.getWorkoutsByType(workoutTypeId);
+  Future<List<WorkoutModel>> getWorkoutsByType(String workoutTypeName) {
+    return _repository.getWorkoutsByType(workoutTypeName);
+  }
+
+  Future<List<WorkoutModel>> getWorkoutsByBodyPart(String bodyPartName) {
+    return _repository.getWorkoutsByBodyPart(bodyPartName);
+  }
+
+  Future<List<WorkoutModel>> getWorkoutsByLevel(String levelName) {
+    return _repository.getWorkoutsByLevel(levelName);
+  }
+
+  Future<List<WorkoutModel>> getWorkoutsByDuration(String duration) async {
+    switch (duration) {
+      case '<4':
+        return _repository.getWorkoutsLessThan(4);
+      case '5-7':
+        return _repository.getWorkoutsByDuration(5, 7);
+      case '8-10':
+        return _repository.getWorkoutsByDuration(8, 10);
+      default:
+        return _repository.getWorkoutsMoreThan(10);
+    }
   }
 }

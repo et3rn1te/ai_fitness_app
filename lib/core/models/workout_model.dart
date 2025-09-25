@@ -7,7 +7,7 @@ class WorkoutModel {
   final int duration;
   final String level;
   final String imageUrl;
-  final String category;
+  final String workoutType;
   final bool isFeatured;
   final int popularity;
   final List<ExerciseModel> exercises;
@@ -18,7 +18,7 @@ class WorkoutModel {
     required this.duration,
     required this.level,
     required this.imageUrl,
-    required this.category,
+    required this.workoutType,
     required this.isFeatured,
     required this.popularity,
     required this.exercises,
@@ -33,7 +33,7 @@ class WorkoutModel {
       duration: data['duration'] ?? 0,
       level: data['level'] ?? 'beginner',
       imageUrl: data['imageUrl'] ?? '',
-      category: data['category'] ?? '',
+      workoutType: data['workoutType'] ?? '',
       isFeatured: data['isFeatured'] ?? false,
       popularity: data['popularity'] ?? 0,
       exercises: _parseExercises(data['exercises'] ?? []),

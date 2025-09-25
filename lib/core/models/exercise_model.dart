@@ -4,12 +4,14 @@ class ExerciseModel {
   final String? duration; // For time-based exercises
   final int? reps; // For rep-based exercises
   final String animationUrl;
+  final String? bodyPart;
 
   ExerciseModel({
     required this.name,
     this.duration,
     this.reps,
     required this.animationUrl,
+    this.bodyPart,
   });
 
   factory ExerciseModel.fromMap(Map<String, dynamic> map) {
@@ -18,6 +20,7 @@ class ExerciseModel {
       duration: map['duration'],
       reps: map['reps'],
       animationUrl: map['animationUrl'] ?? '',
+      bodyPart: map['bodyPart'],
     );
   }
 

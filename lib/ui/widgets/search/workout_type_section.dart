@@ -135,12 +135,12 @@ class WorkoutTypeSection extends StatelessWidget {
     WorkoutTypeModel workoutType,
   ) async {
     final viewModel = Provider.of<CategoryViewModel>(context, listen: false);
-    final workouts = await viewModel.getWorkoutsByType(workoutType.id);
+    final workouts = await viewModel.getWorkoutsByType(workoutType.name);
 
     if (context.mounted) {
       context.push(
         '/results',
-        extra: {'workoutTypeName': workoutType.name, 'workouts': workouts},
+        extra: {'title': workoutType.name, 'workouts': workouts},
       );
     }
   }

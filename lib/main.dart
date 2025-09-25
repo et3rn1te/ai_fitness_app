@@ -70,14 +70,13 @@ final GoRouter _router = GoRouter(
       },
     ),
     GoRoute(
-      name: '/results',
+      name: 'results',
       path: '/results',
       builder: (context, state) {
-        final Map<String, dynamic>? extras =
-            state.extra as Map<String, dynamic>?;
+        final extra = state.extra as Map<String, dynamic>;
         return ResultsPage(
-          categoryName: extras?['categoryName'] ?? 'Unknown',
-          workouts: extras?['workouts'] as List<Map<String, dynamic>>,
+          title: extra['title'] as String,
+          workouts: extra['workouts'] as List<WorkoutModel>,
         );
       },
     ),

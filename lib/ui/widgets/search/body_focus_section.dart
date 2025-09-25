@@ -2,6 +2,7 @@ import 'package:ai_fitness_app/core/models/body_part_model.dart';
 import 'package:ai_fitness_app/core/viewmodels/category_view_model.dart';
 import 'package:ai_fitness_app/ui/widgets/search/body_focus_item.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class BodyFocusSection extends StatelessWidget {
@@ -54,7 +55,15 @@ class BodyFocusSection extends StatelessWidget {
     );
   }
 
-  void _onBodyPartSelected(BuildContext context, BodyPartModel bodyPart) {
-    // Handle body part selection
+  void _onBodyPartSelected(BuildContext context, BodyPartModel bodyPart) async {
+    final viewModel = Provider.of<CategoryViewModel>(context, listen: false);
+    final workouts = await viewModel.getWorkoutsByBodyPart(bodyPart.name);
+
+    if (context.mounted) {
+      context.push(
+        '/results',
+        extra: {'title': bodyPart.name, 'workouts': workouts},
+      );
+    }
   }
 }
