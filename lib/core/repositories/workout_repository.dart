@@ -28,4 +28,22 @@ class WorkoutRepository {
               .toList();
         });
   }
+
+  Future<List<WorkoutModel>> searchWorkouts(String query) async {
+    // Convert query to lowercase for case-insensitive search
+    query = query.toLowerCase();
+
+    final querySnapshot = await _firestore.collection('workouts').get();
+
+    // Filter workouts locally since Firestore doesn't support case-insensitive search
+    return querySnapshot.docs
+        .map((doc) => WorkoutModel.fromFirestore(doc))
+        .where(
+          (workout) =>
+              workout.title.toLowerCase().contains(query) ||
+              workout.workoutType.toLowerCase().contains(query) ||
+              workout.level.toLowerCase().contains(query),
+        )
+        .toList();
+  }
 }

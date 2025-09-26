@@ -53,7 +53,7 @@ class DurationSection extends StatelessWidget {
     if (context.mounted) {
       context.push(
         '/results',
-        extra: {'title': '$duration mins Workouts', 'workouts': workouts},
+        extra: {'title': '$duration mins', 'workouts': workouts},
       );
     }
   }

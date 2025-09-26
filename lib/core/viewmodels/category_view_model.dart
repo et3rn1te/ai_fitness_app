@@ -2,10 +2,13 @@ import 'package:ai_fitness_app/core/models/body_part_model.dart';
 import 'package:ai_fitness_app/core/models/workout_model.dart';
 import 'package:ai_fitness_app/core/models/workout_type_model.dart';
 import 'package:ai_fitness_app/core/repositories/category_repository.dart';
+import 'package:ai_fitness_app/core/repositories/workout_repository.dart';
 import 'package:flutter/material.dart';
 
 class CategoryViewModel extends ChangeNotifier {
   final CategoryRepository _repository;
+  final WorkoutRepository _workoutRepository = WorkoutRepository();
+  bool isLoading = false;
 
   CategoryViewModel(this._repository);
 
@@ -39,6 +42,24 @@ class CategoryViewModel extends ChangeNotifier {
         return _repository.getWorkoutsByDuration(8, 10);
       default:
         return _repository.getWorkoutsMoreThan(10);
+    }
+  }
+
+  Future<List<WorkoutModel>> searchWorkouts(String query) async {
+    try {
+      isLoading = true;
+      notifyListeners();
+
+      final results = await _workoutRepository.searchWorkouts(query);
+
+      isLoading = false;
+      notifyListeners();
+
+      return results;
+    } catch (e) {
+      isLoading = false;
+      notifyListeners();
+      rethrow;
     }
   }
 }
