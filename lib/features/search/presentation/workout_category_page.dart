@@ -1,10 +1,10 @@
 import 'package:ai_fitness_app/core/api/category_api_service.dart';
 import 'package:ai_fitness_app/core/categories/body_part_model.dart';
 import 'package:ai_fitness_app/core/categories/category_model.dart';
-import 'package:ai_fitness_app/ui/widgets/search/body_focus_item.dart';
-import 'package:ai_fitness_app/ui/widgets/search/duration_item.dart';
-import 'package:ai_fitness_app/ui/widgets/search/level_badge.dart';
-import 'package:ai_fitness_app/ui/widgets/search/workout_type_item.dart';
+import 'package:ai_fitness_app/features/search/widgets/body_focus_item.dart';
+import 'package:ai_fitness_app/features/search/widgets/duration_item.dart';
+import 'package:ai_fitness_app/features/search/widgets/level_badge.dart';
+import 'package:ai_fitness_app/features/search/widgets/workout_type_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

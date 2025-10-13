@@ -1,11 +1,11 @@
 // screens/pose_detection_page.dart
-import 'package:ai_fitness_app/ui/widgets/pose_detection/bottom_control.dart';
-import 'package:ai_fitness_app/ui/widgets/pose_detection/camera_preview.dart';
-import 'package:ai_fitness_app/ui/widgets/pose_detection/exercise_guide_sheet.dart';
-import 'package:ai_fitness_app/ui/widgets/pose_detection/exercise_info_overlay.dart';
-import 'package:ai_fitness_app/ui/widgets/pose_detection/form_feedback_overlay.dart';
-import 'package:ai_fitness_app/ui/widgets/pose_detection/history_bottom_sheet.dart';
-import 'package:ai_fitness_app/ui/widgets/pose_detection/top_controls.dart';
+import 'package:ai_fitness_app/features/main/widgets/pose/bottom_control.dart';
+import 'package:ai_fitness_app/features/main/widgets/pose/camera_preview.dart';
+import 'package:ai_fitness_app/features/main/widgets/pose/exercise_guide_sheet.dart';
+import 'package:ai_fitness_app/features/main/widgets/pose/exercise_info_overlay.dart';
+import 'package:ai_fitness_app/features/main/widgets/pose/form_feedback_overlay.dart';
+import 'package:ai_fitness_app/features/main/widgets/pose/history_bottom_sheet.dart';
+import 'package:ai_fitness_app/features/main/widgets/pose/top_controls.dart';
 import 'package:flutter/material.dart';
 
 class PoseDetectionPage extends StatefulWidget {

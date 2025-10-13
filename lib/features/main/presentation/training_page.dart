@@ -1,12 +1,12 @@
 import 'package:ai_fitness_app/core/api/workout_api_service.dart';
 import 'package:ai_fitness_app/core/workouts/workout_card_model.dart';
 import 'package:ai_fitness_app/core/workouts/workout_summary_model.dart';
-import 'package:ai_fitness_app/ui/widgets/common/custom_appbar.dart';
-import 'package:ai_fitness_app/ui/widgets/common/custom_bottomnav.dart';
-import 'package:ai_fitness_app/ui/widgets/common/section_title.dart';
-import 'package:ai_fitness_app/ui/widgets/training/training_banner.dart';
-import 'package:ai_fitness_app/ui/widgets/workout/workout_card_1.dart';
-import 'package:ai_fitness_app/ui/widgets/workout/workout_card_2.dart';
+import 'package:ai_fitness_app/features/main/widgets/training_banner.dart';
+import 'package:ai_fitness_app/shared/widgets/workout_card_1.dart';
+import 'package:ai_fitness_app/shared/widgets/workout_card_2.dart';
+import 'package:ai_fitness_app/shared/widgets/custom_appbar.dart';
+import 'package:ai_fitness_app/shared/widgets/custom_bottomnav.dart';
+import 'package:ai_fitness_app/shared/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

@@ -1,12 +1,12 @@
-import 'package:ai_fitness_app/ui/views/auth/login_page.dart';
-import 'package:ai_fitness_app/ui/views/home_page.dart';
-import 'package:ai_fitness_app/ui/views/pose/pose_detection_page.dart';
-import 'package:ai_fitness_app/ui/views/workouts/custom_workout_page.dart';
-import 'package:ai_fitness_app/ui/views/workouts/workout_category_page.dart';
-import 'package:ai_fitness_app/ui/views/workouts/workout_results_page.dart';
-import 'package:ai_fitness_app/ui/views/settings/settings_page.dart';
-import 'package:ai_fitness_app/ui/views/workouts/training_page.dart';
-import 'package:ai_fitness_app/ui/views/workouts/workout_detail_page.dart';
+import 'package:ai_fitness_app/features/auth/login_page.dart';
+import 'package:ai_fitness_app/features/main/presentation/home_page.dart';
+import 'package:ai_fitness_app/features/main/presentation/pose_detection_page.dart';
+import 'package:ai_fitness_app/features/workouts/presentation/custom_workout_page.dart';
+import 'package:ai_fitness_app/features/search/presentation/workout_category_page.dart';
+import 'package:ai_fitness_app/features/search/presentation/workout_results_page.dart';
+import 'package:ai_fitness_app/features/main/presentation/settings_page.dart';
+import 'package:ai_fitness_app/features/main/presentation/training_page.dart';
+import 'package:ai_fitness_app/features/workouts/presentation/workout_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

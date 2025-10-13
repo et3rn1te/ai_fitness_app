@@ -1,8 +1,8 @@
-import 'package:ai_fitness_app/ui/widgets/common/custom_appbar.dart';
-import 'package:ai_fitness_app/ui/widgets/common/custom_bottomnav.dart';
-import 'package:ai_fitness_app/ui/widgets/workout/custom_workout_banner.dart';
-import 'package:ai_fitness_app/ui/widgets/workout/daily_challenge.dart';
-import 'package:ai_fitness_app/ui/widgets/workout/workout_streak.dart';
+import 'package:ai_fitness_app/shared/widgets/custom_appbar.dart';
+import 'package:ai_fitness_app/shared/widgets/custom_bottomnav.dart';
+import 'package:ai_fitness_app/features/workouts/widgets/custom_workout_banner.dart';
+import 'package:ai_fitness_app/features/workouts/widgets/daily_challenge.dart';
+import 'package:ai_fitness_app/features/workouts/widgets/workout_streak.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

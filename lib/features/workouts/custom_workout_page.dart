@@ -1,7 +1,7 @@
 import 'package:ai_fitness_app/core/api/workout_api_service.dart';
 import 'package:ai_fitness_app/core/workouts/workout_summary_model.dart';
-import 'package:ai_fitness_app/ui/views/exercises/add_exercises_dialog.dart';
-import 'package:ai_fitness_app/ui/widgets/workout/workout_card_3.dart';
+import 'package:ai_fitness_app/features/search/presentation/add_exercises_dialog.dart';
+import 'package:ai_fitness_app/shared/widgets/workout_card_3.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
