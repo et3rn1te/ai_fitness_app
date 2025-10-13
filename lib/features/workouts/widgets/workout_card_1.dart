@@ -1,8 +1,8 @@
-import 'package:ai_fitness_app/core/workouts/workout_card_model.dart';
+import 'package:ai_fitness_app/core/workouts/workout_summary_model.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutCardVariant1 extends StatelessWidget {
-  final WorkoutCard workout;
+  final WorkoutSummary workout;
   final VoidCallback? onTap;
 
   const WorkoutCardVariant1({super.key, required this.workout, this.onTap});

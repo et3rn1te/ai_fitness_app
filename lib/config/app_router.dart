@@ -1,12 +1,12 @@
-import 'package:ai_fitness_app/ui/views/auth/login_page.dart';
-import 'package:ai_fitness_app/ui/views/home_page.dart';
-import 'package:ai_fitness_app/ui/views/pose/pose_detection_page.dart';
-import 'package:ai_fitness_app/ui/views/workouts/custom_workout_page.dart';
-import 'package:ai_fitness_app/ui/views/workouts/workout_category_page.dart';
-import 'package:ai_fitness_app/ui/views/workouts/workout_results_page.dart';
-import 'package:ai_fitness_app/ui/views/settings/settings_page.dart';
-import 'package:ai_fitness_app/ui/views/workouts/training_page.dart';
-import 'package:ai_fitness_app/ui/views/workouts/workout_detail_page.dart';
+import 'package:ai_fitness_app/features/authentication/login_page.dart';
+import 'package:ai_fitness_app/features/home_page.dart';
+import 'package:ai_fitness_app/features/pose/presentation/pose_detection_page.dart';
+import 'package:ai_fitness_app/features/workouts/presentation/custom_workout_page.dart';
+import 'package:ai_fitness_app/features/workouts/presentation/category_page.dart';
+import 'package:ai_fitness_app/features/workouts/presentation/results_page.dart';
+import 'package:ai_fitness_app/features/settings/presentation/settings_page.dart';
+import 'package:ai_fitness_app/features/workouts/presentation/training_page.dart';
+import 'package:ai_fitness_app/features/workouts/presentation/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -31,7 +31,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       name: 'category',
       path: '/category',
-      builder: (context, state) => const WorkoutCategoryPage(),
+      builder: (context, state) => const CategoryPage(),
     ),
     GoRoute(
       name: 'results',
@@ -39,9 +39,7 @@ final GoRouter router = GoRouter(
       builder: (context, state) {
         final allParams = state.uri.queryParameters;
         final title = allParams['title'] ?? 'Results';
-        final queryParams = Map<String, String>.from(allParams)
-          ..remove('title');
-        return WorkoutResultsPage(title: title, queryParams: queryParams);
+        return ResultsPage(title: title);
       },
     ),
     GoRoute(

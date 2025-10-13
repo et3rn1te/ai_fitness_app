@@ -1,4 +1,4 @@
-enum WorkoutLevel { BEGINNER, INTERMEDIATE, ADVANCED }
+enum WorkoutLevel { BEGINNER, INTERMEDIATE, ADVANCED, UNKNOWN }
 
 class WorkoutSummary {
   final int id;
