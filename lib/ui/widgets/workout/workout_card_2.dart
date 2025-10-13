@@ -1,22 +1,16 @@
+import 'package:ai_fitness_app/core/workouts/workout_summary_model.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutCardVariant2 extends StatelessWidget {
-  final String title;
-  final String duration;
-  final int energyLevel; // 1-3 representing beginner, intermediate, advanced
-  final String imageUrl;
+  final WorkoutSummary workout;
   final VoidCallback? onTap;
 
-  const WorkoutCardVariant2({
-    super.key,
-    required this.title,
-    required this.duration,
-    required this.energyLevel,
-    required this.imageUrl,
-    this.onTap,
-  });
+  const WorkoutCardVariant2({super.key, required this.workout, this.onTap});
 
-  Widget _buildEnergyLevel() {
+  // This helper now works with the enum
+  Widget _buildLevelIndicator() {
+    // .index gives us 0 for BEGINNER, 1 for INTERMEDIATE, etc.
+    final levelIndex = workout.level.index;
     return Row(
       children: List.generate(3, (index) {
         return Padding(
@@ -24,8 +18,8 @@ class WorkoutCardVariant2 extends StatelessWidget {
           child: Icon(
             Icons.bolt,
             size: 20,
-            color: index < energyLevel
-                ? Colors.amber
+            color: index <= levelIndex
+                ? Colors.blue[300]
                 : Colors.grey.withOpacity(0.3),
           ),
         );
@@ -35,6 +29,10 @@ class WorkoutCardVariant2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final durationText = workout.duration != null
+        ? '${workout.duration} mins'
+        : 'N/A';
+
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -45,7 +43,6 @@ class WorkoutCardVariant2 extends StatelessWidget {
           height: 100,
           child: Row(
             children: [
-              // Image section
               SizedBox(
                 width: 100,
                 height: 100,
@@ -55,7 +52,7 @@ class WorkoutCardVariant2 extends StatelessWidget {
                     bottomLeft: Radius.circular(12),
                   ),
                   child: Image.network(
-                    imageUrl,
+                    workout.imageUrl,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
@@ -66,7 +63,6 @@ class WorkoutCardVariant2 extends StatelessWidget {
                   ),
                 ),
               ),
-              // Content section
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(12),
@@ -75,7 +71,7 @@ class WorkoutCardVariant2 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        title,
+                        workout.title,
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -85,16 +81,15 @@ class WorkoutCardVariant2 extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        duration,
+                        durationText,
                         style: TextStyle(color: Colors.grey[600], fontSize: 14),
                       ),
                       const SizedBox(height: 4),
-                      _buildEnergyLevel(),
+                      _buildLevelIndicator(), // Updated to use the new logic
                     ],
                   ),
                 ),
               ),
-              // Arrow icon
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Icon(Icons.chevron_right, color: Colors.grey[400]),

@@ -1,25 +1,54 @@
+import 'package:ai_fitness_app/core/api/workout_api_service.dart';
+import 'package:ai_fitness_app/core/workouts/workout_detail_model.dart';
 import 'package:ai_fitness_app/ui/widgets/exercises/exercise_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ExerciseListPage extends StatelessWidget {
-  final String workoutName;
-  final String duration;
-  final int exerciseCount;
-  final String backgroundImageUrl;
-  final List<Map<String, dynamic>> exercises;
+class WorkoutDetailPage extends StatefulWidget {
+  final int workoutId;
+  const WorkoutDetailPage({Key? key, required this.workoutId})
+    : super(key: key);
 
-  const ExerciseListPage({
-    super.key,
-    required this.workoutName,
-    required this.duration,
-    required this.exerciseCount,
-    required this.backgroundImageUrl,
-    required this.exercises,
-  });
+  @override
+  State<WorkoutDetailPage> createState() => _WorkoutDetailPageState();
+}
+
+class _WorkoutDetailPageState extends State<WorkoutDetailPage> {
+  late Future<WorkoutDetail> futureWorkoutDetail;
+  final WorkoutApiService apiService = WorkoutApiService();
+
+  @override
+  void initState() {
+    super.initState();
+    futureWorkoutDetail = apiService.fetchWorkoutDetail(widget.workoutId);
+  }
 
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<WorkoutDetail>(
+      future: futureWorkoutDetail,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        } else if (snapshot.hasError) {
+          return Scaffold(
+            appBar: AppBar(title: const Text("Error")),
+            body: Center(child: Text("Error fetching data: ${snapshot.error}")),
+          );
+        } else if (snapshot.hasData) {
+          final workout = snapshot.data!;
+          return _buildUI(context, workout);
+        }
+        return const Scaffold(
+          body: Center(child: Text("No workout data found.")),
+        );
+      },
+    );
+  }
+
+  Widget _buildUI(BuildContext context, WorkoutDetail workout) {
     return Scaffold(
       body: Stack(
         children: [
@@ -28,7 +57,7 @@ class ExerciseListPage extends StatelessWidget {
             height: 200,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(backgroundImageUrl),
+                image: NetworkImage(workout.imageUrl),
                 fit: BoxFit.cover,
               ),
             ),
@@ -95,7 +124,7 @@ class ExerciseListPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              workoutName,
+                              workout.title,
                               style: const TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
@@ -104,6 +133,7 @@ class ExerciseListPage extends StatelessWidget {
                             const SizedBox(height: 12),
                             Row(
                               children: [
+                                // Duration Chip
                                 Container(
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: 12,
@@ -122,7 +152,7 @@ class ExerciseListPage extends StatelessWidget {
                                       ),
                                       const SizedBox(width: 4),
                                       Text(
-                                        duration,
+                                        '${workout.duration ?? 0} mins',
                                         style: const TextStyle(
                                           color: Colors.blue,
                                           fontWeight: FontWeight.w500,
@@ -132,6 +162,7 @@ class ExerciseListPage extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(width: 12),
+                                // Exercise Count Chip
                                 Container(
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: 12,
@@ -150,7 +181,7 @@ class ExerciseListPage extends StatelessWidget {
                                       ),
                                       const SizedBox(width: 4),
                                       Text(
-                                        '$exerciseCount exercises',
+                                        '${workout.totalExercises} exercises',
                                         style: const TextStyle(
                                           color: Colors.purple,
                                           fontWeight: FontWeight.w500,
@@ -180,7 +211,7 @@ class ExerciseListPage extends StatelessWidget {
                             ),
                             TextButton(
                               onPressed: () {
-                                // Handle edit
+                                /* Handle edit */
                               },
                               child: const Row(
                                 children: [
@@ -196,16 +227,16 @@ class ExerciseListPage extends StatelessWidget {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         padding: const EdgeInsets.all(20),
-                        itemCount: exercises.length,
+                        itemCount: workout.exercises.length,
                         separatorBuilder: (context, index) => const Divider(),
                         itemBuilder: (context, index) {
-                          final exercise = exercises[index];
+                          final exercise = workout.exercises[index];
                           return ExerciseItem(
-                            name: exercise['name'],
-                            count: exercise['count'],
-                            animationUrl: exercise['animationUrl'],
+                            name: exercise.exerciseTitle,
+                            count: exercise.displayCount,
+                            animationUrl: exercise.exerciseAnimationUrl,
                             onReplace: () {
-                              // Handle replace
+                              /* Handle replace */
                             },
                           );
                         },
@@ -225,7 +256,7 @@ class ExerciseListPage extends StatelessWidget {
             bottom: 20,
             child: ElevatedButton(
               onPressed: () {
-                // Handle start workout
+                /* Handle start workout */
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 16),

@@ -1,20 +1,11 @@
+import 'package:ai_fitness_app/core/workouts/workout_card_model.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutCardVariant1 extends StatelessWidget {
-  final String title;
-  final String duration;
-  final String level;
-  final String backgroundImageUrl;
+  final WorkoutCard workout;
   final VoidCallback? onTap;
 
-  const WorkoutCardVariant1({
-    super.key,
-    required this.title,
-    required this.duration,
-    required this.level,
-    required this.backgroundImageUrl,
-    this.onTap,
-  });
+  const WorkoutCardVariant1({super.key, required this.workout, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +13,14 @@ class WorkoutCardVariant1 extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       child: InkWell(
         onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
         child: Container(
           height: 160,
           width: 375,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             image: DecorationImage(
-              image: NetworkImage(backgroundImageUrl),
+              image: NetworkImage(workout.imageUrl),
               fit: BoxFit.cover,
             ),
           ),
@@ -47,52 +39,12 @@ class WorkoutCardVariant1 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  title,
+                  workout.title,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        duration,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        level,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
               ],
             ),
