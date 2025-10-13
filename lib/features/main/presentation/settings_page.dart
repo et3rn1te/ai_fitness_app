@@ -1,4 +1,3 @@
-// screens/settings_page.dart
 import 'package:ai_fitness_app/shared/widgets/custom_appbar.dart';
 import 'package:ai_fitness_app/shared/widgets/custom_bottomnav.dart';
 import 'package:flutter/material.dart';

@@ -1,195 +1,182 @@
-import 'package:ai_fitness_app/data/remote/workout_api_service.dart';
-import 'package:ai_fitness_app/data/models/workouts/workout_card_model.dart';
-import 'package:ai_fitness_app/data/models/workouts/workout_summary_model.dart';
+import 'package:ai_fitness_app/features/main/viewmodels/training_viewmodel.dart';
 import 'package:ai_fitness_app/features/main/widgets/training_banner.dart';
-import 'package:ai_fitness_app/shared/widgets/workout_card_1.dart';
-import 'package:ai_fitness_app/shared/widgets/workout_card_2.dart';
 import 'package:ai_fitness_app/shared/widgets/custom_appbar.dart';
 import 'package:ai_fitness_app/shared/widgets/custom_bottomnav.dart';
 import 'package:ai_fitness_app/shared/widgets/section_title.dart';
+import 'package:ai_fitness_app/shared/widgets/workout_card_1.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ai_fitness_app/data/models/workouts/workout_card_model.dart';
 
-class TrainingPage extends StatefulWidget {
+class TrainingPage extends StatelessWidget {
   const TrainingPage({super.key});
 
   @override
-  State<TrainingPage> createState() => _TrainingPageState();
-}
-
-class _TrainingPageState extends State<TrainingPage> {
-  final WorkoutApiService _apiService = WorkoutApiService();
-
-  late Future<List<WorkoutCard>> _featuredWorkouts;
-  late Future<List<WorkoutSummary>> _popularWorkouts;
-  late Future<List<WorkoutCard>> _beginnerWorkouts;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadWorkouts();
-  }
-
-  void _loadWorkouts() {
-    // In a real app, you'd use query params like {'category': 'featured'}
-    _featuredWorkouts = _apiService.fetchWorkoutCard();
-    _popularWorkouts = _apiService.fetchWorkoutSummary();
-    _beginnerWorkouts = _apiService.fetchWorkoutCard();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        title: 'Training',
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () => context.push('/category'),
+    // The Consumer widget listens to the ViewModel and rebuilds the UI on changes.
+    return Consumer<TrainingViewModel>(
+      builder: (context, viewModel, child) {
+        return Scaffold(
+          appBar: CustomAppBar(
+            title: 'Training',
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () => context.push('/category'),
+              ),
+              IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
+            ],
           ),
-          IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TrainingBanner(),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const TrainingBanner(),
 
-            // Featured Workouts Section (uses Card Variant 1)
-            SectionTitle(title: 'Featured Workouts', onSeeAll: () {}),
-            _buildHorizontalCardList(_featuredWorkouts),
+                // Featured Workouts Section
+                SectionTitle(title: 'Featured Workouts', onSeeAll: () {}),
+                _buildHorizontalCardList(
+                  context,
+                  viewModel.featuredState,
+                  viewModel.featuredWorkouts,
+                  viewModel.errorMessage,
+                ),
 
-            // Popular Workouts Section (uses Card Variant 2)
-            const SizedBox(height: 24),
-            SectionTitle(title: 'Popular Workouts', onSeeAll: () {}),
-            _buildTwoRowCardList(_popularWorkouts),
+                // Popular Workouts Section
+                const SizedBox(height: 24),
+                SectionTitle(title: 'Popular Workouts', onSeeAll: () {}),
+                _buildTwoRowCardList(
+                  context,
+                  viewModel.popularState,
+                  viewModel.popularWorkouts,
+                  viewModel.errorMessage,
+                ),
 
-            // Beginner Friendly Section (uses Card Variant 1)
-            const SizedBox(height: 24),
-            SectionTitle(title: 'Beginner Friendly', onSeeAll: () {}),
-            _buildHorizontalCardList(_beginnerWorkouts),
+                // Beginner Friendly Section
+                const SizedBox(height: 24),
+                SectionTitle(title: 'Beginner Friendly', onSeeAll: () {}),
+                _buildHorizontalCardList(
+                  context,
+                  viewModel.beginnerState,
+                  viewModel.beginnerWorkouts,
+                  viewModel.errorMessage,
+                ),
 
-            const SizedBox(height: 24),
-          ],
-        ),
-      ),
-      bottomNavigationBar: CustomBottomNav(
-        currentIndex: 1,
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              // Navigate to Home
-              context.push('/home');
-              break;
-            case 1:
-              // Already on Training
-              break;
-            case 2:
-              // Navigate to Pose
-              context.push('/pose_detection');
-              break;
-            case 3:
-              // Navigate to Settings
-              context.push('/settings');
-              break;
-          }
-        },
-      ),
+                const SizedBox(height: 24),
+              ],
+            ),
+          ),
+          bottomNavigationBar: CustomBottomNav(
+            currentIndex: 1,
+            onTap: (index) {
+              switch (index) {
+                case 0:
+                  context.push('/home');
+                  break;
+                case 1:
+                  break;
+                case 2:
+                  context.push('/pose_detection');
+                  break;
+                case 3:
+                  context.push('/settings');
+                  break;
+              }
+            },
+          ),
+        );
+      },
     );
   }
 
-  /// Builds a standard horizontal list view using WorkoutCardVariant1.
-  Widget _buildHorizontalCardList(Future<List<WorkoutCard>> futureWorkouts) {
+  /// Builds a standard horizontal list view for WorkoutCard.
+  Widget _buildHorizontalCardList(
+    BuildContext context,
+    ViewState state,
+    List<WorkoutCard> workouts,
+    String? errorMessage,
+  ) {
     return SizedBox(
       height: 200,
-      child: FutureBuilder<List<WorkoutCard>>(
-        future: futureWorkouts,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-          if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No workouts found.'));
-          }
-
-          final workouts = snapshot.data!;
-          return ListView.builder(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            itemCount: workouts.length,
-            itemBuilder: (context, index) {
-              final workout = workouts[index];
-              return WorkoutCardVariant1(
-                workout: workout,
-                onTap: () => context.push('/workout/${workout.id}'),
-              );
-            },
-          );
-        },
+      child: _buildStateContent(
+        state,
+        errorMessage,
+        ListView.builder(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          itemCount: workouts.length,
+          itemBuilder: (context, index) {
+            final workout = workouts[index];
+            return WorkoutCardVariant1(
+              workout: workout,
+              onTap: () => context.push('/workout/${workout.id}'),
+            );
+          },
+        ),
       ),
     );
   }
 
-  /// Builds the two-row horizontal list view using WorkoutCardVariant2.
-  Widget _buildTwoRowCardList(Future<List<WorkoutSummary>> futureWorkouts) {
+  /// Builds the two-row horizontal list view for WorkoutSummary.
+  Widget _buildTwoRowCardList(
+    BuildContext context,
+    ViewState state,
+    List<WorkoutCard> workouts,
+    String? errorMessage,
+  ) {
     return SizedBox(
       height: 250, // Adjusted height for two cards + padding
-      child: FutureBuilder<List<WorkoutSummary>>(
-        future: futureWorkouts,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-          if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No popular workouts found.'));
-          }
+      child: _buildStateContent(
+        state,
+        errorMessage,
+        ListView.builder(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          itemCount: (workouts.length / 2).ceil(),
+          itemBuilder: (context, columnIndex) {
+            final int firstIndex = columnIndex * 2;
+            final int secondIndex = firstIndex + 1;
 
-          final workouts = snapshot.data!;
-          return ListView.builder(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            itemCount: (workouts.length / 2).ceil(),
-            itemBuilder: (context, columnIndex) {
-              final int firstIndex = columnIndex * 2;
-              final int secondIndex = firstIndex + 1;
-
-              return SizedBox(
-                width:
-                    MediaQuery.of(context).size.width -
-                    48, // Adjust width as needed
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: Column(
-                    children: [
-                      WorkoutCardVariant2(
-                        workout: workouts[firstIndex],
-                        onTap: () =>
-                            context.push('/workout/${workouts[firstIndex].id}'),
-                      ),
-                      const SizedBox(height: 16),
-                      // Check if a workout exists for the second row
-                      if (secondIndex < workouts.length)
-                        WorkoutCardVariant2(
-                          workout: workouts[secondIndex],
-                          onTap: () => context.push(
-                            '/workout/${workouts[secondIndex].id}',
-                          ),
+            return SizedBox(
+              width: MediaQuery.of(context).size.width - 48,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: Column(
+                  children: [
+                    WorkoutCardVariant1(
+                      workout: workouts[firstIndex],
+                      onTap: () =>
+                          context.push('/workout/${workouts[firstIndex].id}'),
+                    ),
+                    const SizedBox(height: 16),
+                    if (secondIndex < workouts.length)
+                      WorkoutCardVariant1(
+                        workout: workouts[secondIndex],
+                        onTap: () => context.push(
+                          '/workout/${workouts[secondIndex].id}',
                         ),
-                    ],
-                  ),
+                      ),
+                  ],
                 ),
-              );
-            },
-          );
-        },
+              ),
+            );
+          },
+        ),
       ),
     );
+  }
+
+  /// A helper to handle showing loading, error, or success content.
+  Widget _buildStateContent(ViewState state, String? error, Widget content) {
+    switch (state) {
+      case ViewState.loading:
+      case ViewState.idle:
+        return const Center(child: CircularProgressIndicator());
+      case ViewState.error:
+        return Center(child: Text('Error: $error'));
+      case ViewState.success:
+        return content;
+    }
   }
 }
