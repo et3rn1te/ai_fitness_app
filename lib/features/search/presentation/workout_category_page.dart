@@ -1,6 +1,6 @@
-import 'package:ai_fitness_app/core/api/category_api_service.dart';
-import 'package:ai_fitness_app/core/categories/body_part_model.dart';
-import 'package:ai_fitness_app/core/categories/category_model.dart';
+import 'package:ai_fitness_app/data/remote/category_api_service.dart';
+import 'package:ai_fitness_app/data/models/categories/body_part_model.dart';
+import 'package:ai_fitness_app/data/models/categories/category_model.dart';
 import 'package:ai_fitness_app/features/search/widgets/body_focus_item.dart';
 import 'package:ai_fitness_app/features/search/widgets/duration_item.dart';
 import 'package:ai_fitness_app/features/search/widgets/level_badge.dart';

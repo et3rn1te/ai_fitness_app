@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:collection';
-import 'package:ai_fitness_app/core/api/category_api_service.dart';
-import 'package:ai_fitness_app/core/api/exercise_api_service.dart';
-import 'package:ai_fitness_app/core/categories/category_model.dart';
-import 'package:ai_fitness_app/core/exercises/exercise_summary_model.dart';
+import 'package:ai_fitness_app/data/remote/category_api_service.dart';
+import 'package:ai_fitness_app/data/remote/exercise_api_service.dart';
+import 'package:ai_fitness_app/data/models/categories/category_model.dart';
+import 'package:ai_fitness_app/data/models/exercises/exercise_summary_model.dart';
 import 'package:ai_fitness_app/features/search/presentation/exercise_filter_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';

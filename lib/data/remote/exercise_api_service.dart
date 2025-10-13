@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:ai_fitness_app/core/exercises/exercise_summary_model.dart';
+import 'package:ai_fitness_app/data/models/exercises/exercise_summary_model.dart';
 import 'package:http/http.dart' as http;
 
 class ExerciseApiService {

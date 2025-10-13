@@ -1,4 +1,4 @@
-import 'package:ai_fitness_app/core/workouts/workout_summary_model.dart';
+import 'package:ai_fitness_app/data/models/workouts/workout_summary_model.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutCardVariant2 extends StatelessWidget {

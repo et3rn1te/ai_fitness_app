@@ -1,5 +1,5 @@
-import 'package:ai_fitness_app/core/api/category_api_service.dart';
-import 'package:ai_fitness_app/core/categories/category_model.dart';
+import 'package:ai_fitness_app/data/remote/category_api_service.dart';
+import 'package:ai_fitness_app/data/models/categories/category_model.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseFilterDialog extends StatefulWidget {

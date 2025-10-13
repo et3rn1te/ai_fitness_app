@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:ai_fitness_app/core/categories/body_part_model.dart';
-import 'package:ai_fitness_app/core/categories/category_model.dart';
+import 'package:ai_fitness_app/data/models/categories/body_part_model.dart';
+import 'package:ai_fitness_app/data/models/categories/category_model.dart';
 import 'package:http/http.dart' as http;
 
 class CategoryApiService {

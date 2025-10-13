@@ -1,6 +1,6 @@
-import 'package:ai_fitness_app/core/api/workout_api_service.dart';
-import 'package:ai_fitness_app/core/workouts/workout_card_model.dart';
-import 'package:ai_fitness_app/core/workouts/workout_summary_model.dart';
+import 'package:ai_fitness_app/data/remote/workout_api_service.dart';
+import 'package:ai_fitness_app/data/models/workouts/workout_card_model.dart';
+import 'package:ai_fitness_app/data/models/workouts/workout_summary_model.dart';
 import 'package:ai_fitness_app/features/main/widgets/training_banner.dart';
 import 'package:ai_fitness_app/shared/widgets/workout_card_1.dart';
 import 'package:ai_fitness_app/shared/widgets/workout_card_2.dart';
