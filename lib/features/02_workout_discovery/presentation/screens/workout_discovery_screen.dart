@@ -1,6 +1,5 @@
 import 'package:ai_fitness_app/features/02_workout_discovery/presentation/viewmodel/workout_discovery_viewmodel.dart';
 import 'package:ai_fitness_app/features/02_workout_discovery/presentation/widgets/training_banner.dart';
-import 'package:ai_fitness_app/features/main/viewmodels/training_viewmodel.dart';
 import 'package:ai_fitness_app/presentation/widgets/custom_appbar.dart';
 import 'package:ai_fitness_app/presentation/widgets/custom_bottomnav.dart';
 import 'package:ai_fitness_app/presentation/widgets/section_title.dart';
@@ -16,7 +15,7 @@ class WorkoutDiscoveryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // The Consumer widget listens to the ViewModel and rebuilds the UI on changes.
-    return Consumer<TrainingViewModel>(
+    return Consumer<WorkoutDiscoveryViewModel>(
       builder: (context, viewModel, child) {
         return Scaffold(
           appBar: CustomAppBar(
