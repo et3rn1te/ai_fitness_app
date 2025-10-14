@@ -1,4 +1,4 @@
-import 'package:ai_fitness_app/config/app_router.dart';
+import 'package:ai_fitness_app/core/config/app_router.dart';
 import 'package:ai_fitness_app/features/main/viewmodels/training_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
