@@ -1,6 +1,8 @@
+import 'package:ai_fitness_app/data/models/workouts/workout_detail_model.dart';
 import 'package:ai_fitness_app/features/01_authentication/login_screen.dart';
 import 'package:ai_fitness_app/features/02_workout_discovery/presentation/screens/workout_detail_screen.dart';
 import 'package:ai_fitness_app/features/03_workout_editor/presentation/screens/custom_workout_screen.dart';
+import 'package:ai_fitness_app/features/04_workout_player/presentation/screens/workout_player_screen.dart';
 import 'package:ai_fitness_app/presentation/home_screen.dart';
 import 'package:ai_fitness_app/features/05_pose_detection/presentation/screens/pose_detection_screen.dart';
 import 'package:ai_fitness_app/features/02_workout_discovery/presentation/screens/workout_category_screen.dart';
@@ -50,7 +52,15 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const CustomWorkoutScreen(),
     ),
     GoRoute(
-      name: 'workoutDetail',
+      name: 'workout_player',
+      path: '/workout_player',
+      builder: (context, state) {
+        final workout = state.extra as WorkoutDetail;
+        return WorkoutPlayerScreen(workout: workout);
+      },
+    ),
+    GoRoute(
+      name: 'workout_detail',
       path: '/workout/:workoutId',
       builder: (context, state) {
         final workoutId =
