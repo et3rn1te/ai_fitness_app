@@ -1,8 +1,7 @@
-import 'package:ai_fitness_app/features/03_workout_editor/presentation/widgets/custom_workout_banner.dart';
-import 'package:ai_fitness_app/presentation/widgets/custom_appbar.dart';
-import 'package:ai_fitness_app/presentation/widgets/custom_bottomnav.dart';
-import 'package:ai_fitness_app/presentation/widgets/daily_challenge.dart';
-import 'package:ai_fitness_app/presentation/widgets/workout_streak.dart';
+import 'package:ai_fitness_app/shared/widgets/custom_appbar.dart';
+import 'package:ai_fitness_app/shared/widgets/custom_bottomnav.dart';
+import 'package:ai_fitness_app/shared/widgets/daily_challenge.dart';
+import 'package:ai_fitness_app/shared/widgets/workout_streak.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,11 +20,6 @@ class HomeScreen extends StatelessWidget {
               weeklyProgress: [true, true, true, true, true, false, false],
             ),
             const DailyChallenge(),
-            CustomWorkoutBanner(
-              onTap: () {
-                context.push('/custom_workout');
-              },
-            ),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
-import 'package:ai_fitness_app/presentation/widgets/custom_appbar.dart';
-import 'package:ai_fitness_app/presentation/widgets/custom_bottomnav.dart';
+import 'package:ai_fitness_app/shared/widgets/custom_appbar.dart';
+import 'package:ai_fitness_app/shared/widgets/custom_bottomnav.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
