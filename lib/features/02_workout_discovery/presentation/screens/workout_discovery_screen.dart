@@ -77,7 +77,7 @@ class WorkoutDiscoveryScreen extends StatelessWidget {
                 case 1:
                   break;
                 case 2:
-                  context.push('/pose_detection');
+                  context.push('/pose-detection');
                   break;
                 case 3:
                   context.push('/settings');

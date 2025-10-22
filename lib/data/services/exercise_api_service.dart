@@ -1,4 +1,4 @@
-import 'package:ai_fitness_app/data/services/api_service.dart';
+import 'package:ai_fitness_app/core/api/api_service.dart';
 import 'package:ai_fitness_app/data/models/exercises/exercise_summary_model.dart';
 
 class ExerciseApiService {
